@@ -1,5 +1,5 @@
-class CreateStudents < ActiveRecord::Migration[6.0]
-  def self.up
+class Students < ActiveRecord::Migration[6.0]
+  def change
     create_table :students do |t|
       t.column :first_name, :string
       t.column :last_name, :string
@@ -11,9 +11,4 @@ class CreateStudents < ActiveRecord::Migration[6.0]
       t.column :study_type, :string
     end
   end
-
-  def self.down
-    drop_table :students
-  end
-
 end

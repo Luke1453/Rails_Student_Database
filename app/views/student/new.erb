@@ -1,0 +1,33 @@
+<h1>Add new Student</h1>
+
+<%= form_tag :action => 'create' do %>
+
+<p><label for = "student_first_name">Student First Name</label>:
+<%= text_field 'students', 'first_name' %></p>
+
+<p><label for = "student_last_name">Student Last Name</label>:
+<%= text_field 'students', 'last_name' %></p>
+
+<p><label for = "student_p_id">Student Personal ID</label>:
+<%= text_field 'students', 'p_id' %></p>
+
+<p><label for = "student_gander">Student Gander</label>:
+<%= select(:students, :gender, ['Male', 'Female']) %></p>
+
+<p><label for = "student_address">Student Address</label><br/>
+<%= text_area 'students', 'address' %></p>
+
+<p><label for = "student_phone_nr">Student Phone Number</label>:
+<%= text_field 'students', 'phone_nr' %></p>
+
+<p><label for = "student_study_program">Study Program</label>:
+<%= select(:students, :study_program, ['Computer Engineering', 'Computer Systems', 'Telecommunications Systems', 'Electronics Engineering', 'Information Systems', 'Software Engineering']) %></p>
+
+<p><label for = "student_study_program">Study Program</label>:
+<%= select(:students, :study_type, ['Regular', 'Online']) %></p>
+
+<%= submit_tag "Create" %>
+
+<% end -%>
+
+<%= link_to 'Back', {:action => 'list'} %>
