@@ -1,14 +1,52 @@
-<h1><%= @student.first_name %> <%= @student.last_name %></h1>
+<!DOCTYPE html>
+<html>
 
-<p>
-   <strong>Personal ID: </strong> <%= @student.p_id %><br />
-   <strong>Gender:</strong> <%= @student.gender %><br />
-   <strong>Address:</strong> <%= @student.address %><br />
-   <strong>Phone Nr:</strong> <%= @student.phone_nr %><br />
-   <strong>Study Program:</strong> <%= @student.study_program %><br />
-   <strong>Study Type:</strong> <%= @student.study_type %><br />
-</p>
+<head>
+    <title>StaticAiBlog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https: //www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https: //www.w3schools.com/lib/w3-theme-indigo.css">
+</head>
+<style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-family: "Poppins", sans-serif
+    }
 
-<hr />
+    body {
+        font-size: 16px;
+    }
+</style>
 
-<%= link_to 'Back', {:action => 'list'} %>
+<body>
+    <div class="w3-main" style="margin-top:115px;margin-left:40px;margin-right:40px;margin-bottom:40px">
+        <% flash.each do |type, msg| %>
+        <p><%= msg %></p>
+        <% end %>
+
+        <h1><%= @student.first_name %> <%= @student.last_name %></h1>
+
+        <p>
+            <strong>Birth Day: </strong> <%= @student.b_year %>/<%= @student.b_month %>/<%= @student.b_day %><br />
+            <strong>Personal ID: </strong> <%= @student.p_id %><br />
+            <strong>Gender:</strong> <%= @student.gender %><br />
+            <strong>Address:</strong> <%= @student.address %><br />
+            <strong>Phone Nr:</strong> <%= @student.phone_nr %><br />
+            <strong>Study Program:</strong> <%= @student.study_program %><br />
+            <strong>Study Type:</strong> <%= @student.study_type %><br />
+        </p>
+
+        <hr />
+
+        <%= link_to 'Back', '/' %>
+    </div>
+</body>
+
+</html>

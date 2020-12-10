@@ -1,33 +1,113 @@
-<h1>Add new Student</h1>
+<!DOCTYPE html>
+<html>
 
-<%= form_tag :action => 'create' do %>
+<head>
+    <title>StaticAiBlog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-<p><label for = "student_first_name">Student First Name</label>:
-<%= text_field 'students', 'first_name' %></p>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-<p><label for = "student_last_name">Student Last Name</label>:
-<%= text_field 'students', 'last_name' %></p>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
+</head>
 
-<p><label for = "student_p_id">Student Personal ID</label>:
-<%= text_field 'students', 'p_id' %></p>
+<style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-family: "Poppins", sans-serif
+    }
 
-<p><label for = "student_gander">Student Gander</label>:
-<%= select(:students, :gender, ['Male', 'Female']) %></p>
+    body {
+        font-size: 16px;
+    }
+</style>
 
-<p><label for = "student_address">Student Address</label><br/>
-<%= text_area 'students', 'address' %></p>
+<body>
 
-<p><label for = "student_phone_nr">Student Phone Number</label>:
-<%= text_field 'students', 'phone_nr' %></p>
 
-<p><label for = "student_study_program">Study Program</label>:
-<%= select(:students, :study_program, ['Computer Engineering', 'Computer Systems', 'Telecommunications Systems', 'Electronics Engineering', 'Information Systems', 'Software Engineering']) %></p>
+    <div class="w3-sidebar w3-bar-block w3-card" style="margin-top:75px;width:25%;right:0;position:absolute;">
+        <div class="w3-margin">
+            <% flash.each do |type, msg| %>
+            <% msg.each do |m| %>
+            <p style=""><%= m %></p>
+            <% end %>
+            <% end %>
 
-<p><label for = "student_study_program">Study Program</label>:
-<%= select(:students, :study_type, ['Regular', 'Online']) %></p>
+        </div>
 
-<%= submit_tag "Create" %>
+    </div>
 
-<% end -%>
 
-<%= link_to 'Back', {:action => 'list'} %>
+
+    <div class="w3-main" style="margin-top:115px;margin-left:40px;margin-right:40px;margin-bottom:40px">
+
+
+
+        <h1>Add new Student</h1>
+
+        <!-- local: true breaks shit -->
+        <%= form_for @student, local: true, url: student_create_path do |f| %>
+
+        <p>
+            <label>Student First Name</label>:
+            <%= f.text_field :first_name %>
+        </p>
+        <p>
+            <label>Student Last Name</label>:
+            <%= f.text_field :last_name%>
+        </p>
+        <p>
+            <label>Student Birth Date</label>:
+            <%= f.text_field :b_year, placeholder: "Year", :size=>"5" %>
+            <%= f.text_field :b_month, placeholder: "Month", :size=>"5" %>
+            <%= f.text_field :b_day, placeholder: "Day", :size=>"5" %>
+        </p>
+        <p>
+            <label>Student Personal ID</label>:
+            <%= f.text_field :p_id %>
+        </p>
+        <p>
+            <label>Student Gender</label>:
+            <%= f.select(:gender, ['Male', 'Female']) %>
+        </p>
+        <p>
+            <label>Student Address</label><br />
+            <%= f.text_area :address %>
+        </p>
+        <p>
+            <label>Student Phone Number</label>:
+            <%= f.text_field :phone_nr %>
+        </p>
+        <p>
+            <label>Study Program</label>:
+            <%= f.select(:study_program, ['Computer Engineering', 'Computer Systems', 'Telecommunications Systems', 'Electronics Engineering', 'Information Systems', 'Software Engineering']) %>
+        </p>
+        <p>
+            <label>Study Type</label>:
+            <%= f.select(:study_type, ['Regular', 'Online']) %>
+        </p>
+
+        <%= f.submit "Create" %>
+        <% end %>
+
+        <%= link_to 'Back', "/" %>
+
+        <%
+=begin%>
+        <% flash.each do |type, msg| %>
+        <p><%= msg %></p>
+        <% end %>
+        <%
+=end%>
+
+    </div>
+
+</body>
+
+</html>

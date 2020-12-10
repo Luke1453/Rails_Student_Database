@@ -1,6 +1,10 @@
 class StudentController < ApplicationController
   def list
-    @students = Student.all
+    @students = if params[:search].blank?
+                  Student.all
+                else
+                  Student.where('lower(first_name) like ?', params[:search].downcase.to_s)
+                end
   end
 
   def show
@@ -13,10 +17,12 @@ class StudentController < ApplicationController
 
   def create
     @student = Student.new(student_params)
-    @print = @student.last_name
-    if @student.save
-      redirect_to action: 'list'
+
+    if @student.valid?
+      @student.save
+      redirect_to '/', notice: "Student saved!"
     else
+      flash.now[:notice] = @student.errors.full_messages
       render action: 'new'
     end
   end
@@ -28,16 +34,18 @@ class StudentController < ApplicationController
   def update
     @student = Student.find(params[:id])
 
-    if @student.update_attributes(student_param)
-      redirect_to action: 'show', id: @student
+    if @student.valid?
+      @student.update(student_param)
+      redirect_to action: 'show', id: @student, notice: "Student saved!"
     else
+      flash.now[:notice] = @student.errors.full_messages
       render action: 'edit'
     end
   end
 
-  def delete
+  def destroy
     Student.find(params[:id]).destroy
-    redirect_to action: 'list'
+    redirect_to '/', notice: "Student deleted!"
   end
 
   def student_param
@@ -49,11 +57,14 @@ class StudentController < ApplicationController
                   :address,
                   :phone_nr,
                   :study_program,
-                  :study_type)
+                  :study_type,
+                  :b_year,
+                  :b_month,
+                  :b_day)
   end
 
   def student_params
-    params.require(:students)
+    params.require(:student)
           .permit(:first_name,
                   :last_name,
                   :p_id,
@@ -61,6 +72,9 @@ class StudentController < ApplicationController
                   :address,
                   :phone_nr,
                   :study_program,
-                  :study_type)
+                  :study_type,
+                  :b_year,
+                  :b_month,
+                  :b_day)
   end
 end

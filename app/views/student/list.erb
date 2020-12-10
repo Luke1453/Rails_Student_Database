@@ -1,22 +1,84 @@
-<% if @students.blank? %>
-<p>There are not any students currently in the system.</p>
-<% else %>
-<p>These are the current students in our system</p>
+<!DOCTYPE html>
+<html>
 
-<ul id="students">
-    <% @students.each do |c| %>
-    <li>
+<head>
+    <title>StaticAiBlog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-        <%= link_to "#{c.first_name} #{c.last_name}", {:action => 'show', :id => c.id} -%>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-        <b> <%= link_to 'Edit', {:action => "edit", :id => c.id} %> </b>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
+</head>
 
-        <b> <%= link_to 'Delete', {:action => 'delete', :id => c.id},
+<style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-family: "Poppins", sans-serif
+    }
+
+    body {
+        font-size: 16px;
+    }
+</style>
+
+<body>
+
+
+
+    <div class="w3-main" style="margin-top:115px;margin-left:40px;margin-right:140px;margin-bottom:40px">
+
+        <% flash.each do |type, msg| %>
+        <p><%= msg %></p>
+        <% end %>
+
+
+        <%= form_tag '/', method: :get do %>
+        <div class="input-group">
+            <%= search_field_tag :search, params[:search], placeholder: "Search by Name", class: "form-control" %>
+            <div class="input-group-btn" style="margin-top:10px;display:inline">
+                <%= submit_tag 'Search', name: nil %>
+            </div>
+        </div>
+        <% end %>
+
+
+        <a href="/" style="display:inline;margin-right:10px">Show all Students</a>
+        <p style="display:inline"><%= link_to "Add new Student", {:action => 'new' }%></p>
+
+
+
+        <% if @students.blank? %>
+        <p>System found no students.</p>
+        <% else %>
+        <!--<p>These are the current students in our system</p>-->
+
+        <ul id="students">
+            <% @students.each do |c| %>
+            <li>
+
+                <%= link_to "#{c.first_name} #{c.last_name}", controller: "student", action: "show", id: c.id -%>
+
+                <b> <%= link_to 'Edit', controller: "student", action: "edit", id: c.id %> </b>
+
+                <b> <%= link_to 'Delete', c, method: "delete",
         :confirm => "Are you sure you want to delete this student?" %></b>
 
-    </li>
-    <% end %>
-</ul>
+            </li>
+            <% end %>
+        </ul>
 
-<% end %>
-<p><%= link_to "Add new Student", {:action => 'new' }%></p>
+        <% end %>
+
+
+    </div>
+
+</body>
+
+</html>

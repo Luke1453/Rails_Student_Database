@@ -10,13 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_08_211307) do
+ActiveRecord::Schema.define(version: 2020_12_09_195741) do
 
   create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "p_id"
     t.string "gender"
+    t.integer "b_year"
+    t.integer "b_month"
+    t.integer "b_day"
     t.string "address"
     t.string "phone_nr"
     t.string "study_program"

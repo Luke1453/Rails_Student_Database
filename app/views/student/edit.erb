@@ -1,17 +1,74 @@
-<h1>Edit Student Detail</h1>
+<!DOCTYPE html>
+<html>
 
-<%= form_for @student, :url =>{:action => "update", :id =>@student} do |f| %>
+<head>
+    <title>StaticAiBlog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-<p>Student First Name: <%= f.text_field 'first_name' %></p>
-<p>Student Last Name: <%= f.text_field  'last_name' %></p>
-<p>Student Personal ID: <%= f.text_field  'p_id' %></p>
-<p>Student Gender: <%= f.select :gender, ['Male', 'Female'] %></p>
-<p>Student Address: <br/><%= f.text_area 'address' %></p>
-<p>Student Phone Nr: <%= f.text_field  'phone_nr' %></p>
-<p>Study Program: <%= f.select :study_program, ['Computer Engineering', 'Computer Systems', 'Telecommunications Systems', 'Electronics Engineering', 'Information Systems', 'Software Engineering'] %></p>
-<p>Study Type: <%= f.select :study_type, ['Regular', 'Online'] %></p>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-<%= f.submit "Save changes" %>
-<% end %>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
+</head>
 
-<%= link_to 'Back', {:action => 'list' } %>
+<style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-family: "Poppins", sans-serif
+    }
+
+    body {
+        font-size: 16px;
+    }
+</style>
+
+<body>
+
+    <div class="w3-sidebar w3-bar-block w3-card" style="margin-top:75px;width:25%;right:0;position:absolute;">
+        <div class="w3-margin">
+            <% flash.each do |type, msg| %>
+            <% msg.each do |m| %>
+            <p style=""><%= m %></p>
+            <% end %>
+            <% end %>
+
+        </div>
+
+    </div>
+    <div class="w3-main" style="margin-top:115px;margin-left:40px;margin-right:40px;margin-bottom:40px">
+
+        <h1>Edit Student Detail</h1>
+
+        <%= form_with model: @student, local: true, :url =>{:action => "update", :id =>@student} do |f| %>
+
+        <p>Student First Name: <%= f.text_field 'first_name' %></p>
+        <p>Student Last Name: <%= f.text_field  'last_name' %></p>
+        <p>
+            <label>Student Birth Date</label>:
+            <%= f.text_field :b_year, placeholder: "Year", :size=>"5" %>
+            <%= f.text_field :b_month, placeholder: "Month", :size=>"5" %>
+            <%= f.text_field :b_day, placeholder: "Day", :size=>"5" %>
+        </p>
+        <p>Student Personal ID: <%= f.text_field  'p_id' %></p>
+        <p>Student Gender: <%= f.select :gender, ['Male', 'Female'] %></p>
+        <p>Student Address: <br /><%= f.text_area 'address' %></p>
+        <p>Student Phone Nr: <%= f.text_field  'phone_nr' %></p>
+        <p>Study Program: <%= f.select :study_program, ['Computer Engineering', 'Computer Systems', 'Telecommunications Systems', 'Electronics Engineering', 'Information Systems', 'Software Engineering'] %></p>
+        <p>Study Type: <%= f.select :study_type, ['Regular', 'Online'] %></p>
+
+        <%= f.submit "Save changes" %>
+        <% end %>
+
+        <%= link_to 'Back', "/" %>
+
+    </div>
+
+</body>
+
+</html>

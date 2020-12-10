@@ -30,4 +30,11 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      student:
+        p_id: "Personal ID"
+        phone_nr: "Phone number"
+        b_year: "Birth year"
+        b_month: "Birth month"
+        b_day: "Birth day"

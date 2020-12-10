@@ -1,15 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>StudentDatabase</title>
+
+<head>
+    <title>StaticAiBlog</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
-  <body>
-    <%= yield %>
-  </body>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
+</head>
+
+<style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-family: "Poppins", sans-serif
+    }
+
+    body {
+        font-size: 16px;
+    }
+</style>
+
+<body>
+
+    <div class="w3-top w3-container w3-black" style="height:75px;width:100%;font-weight:bold;">
+        <h1 class="w3-center">Rails Student Database</h1>
+    </div>
+
+    <div class="w3-container">
+        <%= yield %>
+    </div>
+</body>
+
 </html>
