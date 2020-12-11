@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Class that controls Student model
 class StudentController < ApplicationController
   def list
     @students = if params[:search].blank?
@@ -20,7 +23,7 @@ class StudentController < ApplicationController
 
     if @student.valid?
       @student.save
-      redirect_to '/', notice: "Student saved!"
+      redirect_to '/', notice: 'Student saved!'
     else
       flash.now[:notice] = @student.errors.full_messages
       render action: 'new'
@@ -36,7 +39,7 @@ class StudentController < ApplicationController
 
     if @student.valid?
       @student.update(student_param)
-      redirect_to action: 'show', id: @student, notice: "Student saved!"
+      redirect_to action: 'show', id: @student, notice: 'Student saved!'
     else
       flash.now[:notice] = @student.errors.full_messages
       render action: 'edit'
@@ -45,7 +48,7 @@ class StudentController < ApplicationController
 
   def destroy
     Student.find(params[:id]).destroy
-    redirect_to '/', notice: "Student deleted!"
+    redirect_to '/', notice: 'Student deleted!'
   end
 
   def student_param
