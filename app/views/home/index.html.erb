@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>StaticAiBlog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
+</head>
+
+<style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-family: "Poppins", sans-serif
+    }
+
+    body {
+        font-size: 16px;
+    }
+</style>
+
+<body>
+
+    <div class="w3-main" style="margin-top:115px;margin-left:40px;margin-right:40px;margin-bottom:40px">
+        <div class="w3-center"> 
+        
+        <% if current_user.nil? %>
+        <%= link_to new_user_session_path, class: 'w3-button w3-border' do %>Sign in<% end %>
+        <% else %>
+        <%= link_to student_list_path(:search => "", :id => ""), class: 'w3-button w3-border' do %>Go to Student Database<% end %>
+        <p> </p>
+        <%= link_to destroy_user_session_path, class: 'w3-button w3-border', method: :delete do %>Log out<% end %>
+        <% end %>
+        
+        </div>
+        
+    </div>
+
+</body>
+
+</html>

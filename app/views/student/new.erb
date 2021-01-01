@@ -93,18 +93,15 @@
             <%= f.select(:study_type, ['Regular', 'Online']) %>
         </p>
 
-        <%= f.submit "Create" %>
+        <div style="display:inline">
+        <%= f.submit "Create", class: 'w3-button w3-border' %>
         <% end %>
 
-        <%= link_to 'Back', "/" %>
+        <%= link_to student_list_path(:search => "", :id => ""), class: 'w3-button w3-border' do %>Back<% end %>
+        </div>
 
-        <%
-=begin%>
-        <% flash.each do |type, msg| %>
-        <p><%= msg %></p>
-        <% end %>
-        <%
-=end%>
+        
+
 
     </div>
 

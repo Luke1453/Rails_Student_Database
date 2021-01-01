@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>StaticAiBlog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https: //www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https: //www.w3schools.com/lib/w3-theme-indigo.css">
+</head>
+<style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-family: "Poppins", sans-serif
+    }
+
+    body {
+        font-size: 16px;
+    }
+</style>
+
+<body>
+    <div class="w3-main w3-center" style="margin-top: 75px;">
+
+        <h2>Sign up</h2>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field w3-margin-bottom">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
+        </div>
+
+        <div class="field w3-margin-bottom">
+
+            <%= f.password_field :password, autocomplete: "new-password", placeholder:"Password" %><br>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %>
+        </div>
+
+        <div class="field w3-margin-bottom">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Password Confirmation" %>
+        </div>
+
+        <div class="actions">
+            <%= f.submit "Sign up", class: "w3-button w3-border" %>
+        </div>
+        <% end %>
+
+        <%= render "devise/shared/links" %>
+
+
+    </div>
+</body>
+
+</html>

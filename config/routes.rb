@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :student
-
+  
   get 'student/list'
   get 'student/new'
   post 'student/create'
@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   get 'student/show'
   get 'student/edit'
   get 'student/destroy'
-  root to: 'student#list'
+  resources :student
+  root to: 'home#index'
 end

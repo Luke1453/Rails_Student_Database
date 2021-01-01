@@ -39,7 +39,7 @@
         <% end %>
 
 
-        <%= form_tag '/', method: :get do %>
+        <%= form_tag student_list_path, method: :get do %>
         <div class="input-group">
             <%= search_field_tag :search, params[:search], placeholder: "Search by Name", class: "form-control" %>
             <div class="input-group-btn" style="margin-top:10px;display:inline">
@@ -48,9 +48,14 @@
         </div>
         <% end %>
 
+        <br>
 
-        <a href="/" style="display:inline;margin-right:10px">Show all Students</a>
-        <p style="display:inline"><%= link_to "Add new Student", {:action => 'new' }%></p>
+        <div style="display:inline;">
+            <%= link_to student_list_path(:search => "", :id => ""), class: 'w3-button w3-border' do %>Show All Students<% end %>
+            <%= link_to "Add new Student", {:action => 'new' }, class: 'w3-button w3-border'%>
+        </div>
+
+        <p style="display:inline"></p>
 
 
 
@@ -62,7 +67,7 @@
         <ul id="students">
             <% @students.each do |c| %>
             <li>
-
+                
                 <%= link_to "#{c.first_name} #{c.last_name}", controller: "student", action: "show", id: c.id -%>
 
                 <b> <%= link_to 'Edit', controller: "student", action: "edit", id: c.id %> </b>

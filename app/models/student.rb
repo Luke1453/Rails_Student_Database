@@ -5,7 +5,7 @@ class Student < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :p_id, presence: true, numericality: { only_integer: true }
-  validates :p_id, uniqueness: true, length: { is: 11 }
+  validates :p_id , length: { is: 11 }
   validates :gender, presence: true
   validates :address, presence: true
   validates :phone_nr, presence: true
@@ -19,6 +19,8 @@ class Student < ApplicationRecord
   validate :gender_personal_id
   validate :phone_validity
   validate :p_id_validity
+
+  has_many :grades
 
   private
 

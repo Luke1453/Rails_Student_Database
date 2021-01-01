@@ -23,7 +23,7 @@ class StudentController < ApplicationController
 
     if @student.valid?
       @student.save
-      redirect_to '/', notice: 'Student saved!'
+      redirect_to student_list_path(:search => "", :id => ""), notice: 'Student saved!'
     else
       flash.now[:notice] = @student.errors.full_messages
       render action: 'new'
@@ -48,7 +48,7 @@ class StudentController < ApplicationController
 
   def destroy
     Student.find(params[:id]).destroy
-    redirect_to '/', notice: 'Student deleted!'
+    redirect_to student_list_path(:search => "", :id => ""), notice: 'Student deleted!'
   end
 
   def student_param

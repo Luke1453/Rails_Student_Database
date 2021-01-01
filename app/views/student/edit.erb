@@ -62,10 +62,12 @@
         <p>Study Program: <%= f.select :study_program, ['Computer Engineering', 'Computer Systems', 'Telecommunications Systems', 'Electronics Engineering', 'Information Systems', 'Software Engineering'] %></p>
         <p>Study Type: <%= f.select :study_type, ['Regular', 'Online'] %></p>
 
-        <%= f.submit "Save changes" %>
+        <div style="display:inline">
+        <%= f.submit "Save Changes", class: 'w3-button w3-border' %>
         <% end %>
 
-        <%= link_to 'Back', "/" %>
+        <%= link_to student_list_path(:search => "", :id => ""), class: 'w3-button w3-border' do %>Back<% end %>
+        </div>
 
     </div>
 
