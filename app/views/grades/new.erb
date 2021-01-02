@@ -26,18 +26,25 @@
 </style>
 
 <body>
+
+    <div class="w3-sidebar w3-bar-block w3-card" style="margin-top:75px;width:25%;right:0;position:absolute;">
+        <div class="w3-margin">
+            <% flash.each do |type, msg| %>
+            <% msg.each do |m| %>
+            <p style=""><%= m %></p>
+            <% end %>
+            <% end %>
+
+        </div>
+
+    </div>
+
     <div class="w3-main" style="margin-top:115px;margin-left:40px;margin-right:40px;margin-bottom:40px">
-        <% flash.each do |type, msg| %>
-        <p><%= msg %></p>
-        <% end %>
 
-        <%
-=begin%>
- <h1><%= @student.first_name %> <%= @student.last_name %></h1> 
-<%
-=end%>
+        <h1><%= @student.first_name %> <%= @student.last_name %></h1>
 
-        <h1>Add new Grade (<%= @grade.student_id%>)</h1>
+
+        <h3>Add new Grade</h3>
 
         <!-- local: true breaks shit -->
         <%= form_for @grade, local: true, url: grades_create_path do |f| %>
@@ -60,10 +67,10 @@
         </p>
 
         <div style="display:inline">
-        <%= f.submit "Submit grade", class: 'w3-button w3-border' %>
-        <% end %>
+            <%= f.submit "Submit grade", class: 'w3-button w3-border' %>
+            <% end %>
 
-        <%= link_to student_list_path(:search => "", :id => ""), class: 'w3-button w3-border' do %>Back<% end %>
+            <%= link_to student_list_path(:search => "", :id => ""), class: 'w3-button w3-border' do %>Back<% end %>
         </div>
     </div>
 </body>

@@ -11,7 +11,7 @@ class Student < ApplicationRecord
   validates :phone_nr, presence: true
   validates :study_program, presence: true
   validates :study_type, presence: true
-  validates :b_year, presence: true, numericality: { only_integer: true, less_than_or_equal_to: 2020 }
+  validates :b_year, presence: true, numericality: { only_integer: true, less_than_or_equal_to: 2021 }
   validates :b_month, presence: true, numericality: { only_integer: true, less_than_or_equal_to: 12 }
   validates :b_day, presence: true, numericality: { only_integer: true, less_than_or_equal_to: 31 }
 
