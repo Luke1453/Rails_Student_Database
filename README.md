@@ -1,24 +1,16 @@
-# README
+# Rails Student Database
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby version: 2.7.2p137  
+Rails version: Rails 6.0.3.4  
+Database: MYSQL
 
-Things you may want to cover:
+Uses are managed using Devise gem  
 
-* Ruby version
+Project allows user to:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Sign Up
+* Log in
+* Add / Delete / edit students in database
+* Student personal info is validated using validations
+* Each student can be assigned grades with one to many relation
+* Grades can be deleted
