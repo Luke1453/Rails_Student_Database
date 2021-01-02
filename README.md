@@ -14,3 +14,5 @@ Project allows user to:
 * Student personal info is validated using validations
 * Each student can be assigned grades with one to many relation
 * Grades can be deleted
+
+Demo can be viewed in Rails Student Database.pdf file
