@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get 'student/show'
   get 'student/edit'
   get 'student/destroy'
-  resources :student
+  get 'grades/new'
+  post 'grades/create'
+  get 'grades/destroy'
+  resources :student, :grades
   root to: 'home#index'
 end

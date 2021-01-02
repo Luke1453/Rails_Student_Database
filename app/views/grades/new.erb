@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>StaticAiBlog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https: //www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https: //www.w3schools.com/lib/w3-theme-indigo.css">
+</head>
+<style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-family: "Poppins", sans-serif
+    }
+
+    body {
+        font-size: 16px;
+    }
+</style>
+
+<body>
+    <div class="w3-main" style="margin-top:115px;margin-left:40px;margin-right:40px;margin-bottom:40px">
+        <% flash.each do |type, msg| %>
+        <p><%= msg %></p>
+        <% end %>
+
+        <%
+=begin%>
+ <h1><%= @student.first_name %> <%= @student.last_name %></h1> 
+<%
+=end%>
+
+        <h1>Add new Grade (<%= @grade.student_id%>)</h1>
+
+        <!-- local: true breaks shit -->
+        <%= form_for @grade, local: true, url: grades_create_path do |f| %>
+
+        <%= f.hidden_field :student_id, :value => @student.id %>
+
+        <p>
+            <label>Grade Name</label>:
+            <%= f.text_field :grade_name %>
+        </p>
+        <p>
+            <label>Grading Date</label>:
+            <%= f.text_field :grade_year_t, placeholder: "Year", :size=>"5" %>
+            <%= f.text_field :grade_month_t, placeholder: "Month", :size=>"5" %>
+            <%= f.text_field :grade_day_t, placeholder: "Day", :size=>"5" %>
+        </p>
+        <p>
+            <label>Grade Value</label>:
+            <%= f.text_field :grade_value %>
+        </p>
+
+        <div style="display:inline">
+        <%= f.submit "Submit grade", class: 'w3-button w3-border' %>
+        <% end %>
+
+        <%= link_to student_list_path(:search => "", :id => ""), class: 'w3-button w3-border' do %>Back<% end %>
+        </div>
+    </div>
+</body>
+
+</html>

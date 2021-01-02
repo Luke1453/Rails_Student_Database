@@ -44,7 +44,29 @@
         </p>
 
         <hr />
-        <%= link_to student_list_path(:search => "", :id => ""), class: 'w3-button w3-border' do %>Back<% end %>
+
+        <% unless @student.grades.empty? %>
+
+        <% @student.grades.each do |grade| -%>
+        <p>
+            <strong><%= grade.grade_name %>: <%= grade.grade_value  %>%</strong> (<%= grade.grade_year_t%>/<%= grade.grade_month_t%>/<%= grade.grade_day_t%>) 
+            <b> <%= link_to 'Delete', grade, method: "delete",
+        :confirm => "Are you sure you want to delete this grade?" %></b>
+            
+            <br>
+        </p>
+        
+        <% end -%>
+
+        <hr />
+
+        <% end %>
+
+        <div style="display:inline">
+            <%= link_to student_list_path(:search => "", :id => ""), class: 'w3-button w3-border' do %>Back<% end %>
+            <%= link_to grades_new_path(:id => @student.id), class: 'w3-button w3-border' do %>Add grades<% end %>
+        </div>
+
     </div>
 </body>
 

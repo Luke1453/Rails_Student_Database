@@ -1,4 +1,4 @@
-class ChangeGradeTable < ActiveRecord::Migration[6.0]
+class Ll < ActiveRecord::Migration[6.0]
   def change
     create_table :grades do |t|
       t.column :grade_name, :string
